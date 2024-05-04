@@ -1,0 +1,50 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "CreateUserSchema",
+    "type": "object",
+    "properties": {
+        "first_name": {
+            "type":"string"
+        },
+        "last_name": {
+            "type":"string"
+        },
+        "gender": {
+            "type":"string"
+        } ,
+        "birth": {
+            "type":"date"
+        },    
+        "email": {
+            "type":"string"
+        },
+        "password_hash": {
+            "type":"string"
+        },
+        "work_email": {
+            "type":"string"
+        },
+        "phone": {
+            "type":"string"
+        },
+        "work_phone": {
+            "type":"string"
+        },
+        "citizen_id": {
+            "type":"string"
+        },
+        "professional_id": {
+            "type":"string"
+        },
+        "business": {
+            "type":"string"
+        },
+        "origin": {
+            "type":"string"
+        },
+        "pix": {
+            "type":"string"
+        }
+    },
+    "required": ["first_name","last_name","email","password_hash"]
+}
