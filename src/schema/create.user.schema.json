@@ -18,7 +18,7 @@
         "email": {
             "type":"string"
         },
-        "password_hash": {
+        "password": {
             "type":"string"
         },
         "work_email": {
@@ -46,5 +46,5 @@
             "type":"string"
         }
     },
-    "required": ["first_name","last_name","email","password_hash"]
+    "required": ["first_name","last_name","email","password"]
 }
