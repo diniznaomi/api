@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 require('dotenv').config();
+require('./database/index');
 
 const express = require('express');
 const routes = require('./routes');

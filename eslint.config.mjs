@@ -13,7 +13,7 @@ export default [
     rules: {
         "no-unused-vars": "warn",
         "no-param-reassign": "off",
-        
+        "no-undef": "off"
     }
   },
   pluginJs.configs.recommended,
