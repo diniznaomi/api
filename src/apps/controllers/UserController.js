@@ -84,7 +84,7 @@ class UserController {
     });
 
     if (!userToDelete) {
-      return res.status(400).json({ message: 'User not exists!' });
+      return res.status(400).json({ message: 'User not exists' });
     }
 
     await Users.destroy({
@@ -93,7 +93,7 @@ class UserController {
       },
     });
 
-    return res.status(200).json({ message: 'User deleted!' });
+    return res.status(200).json({ message: 'User deleted' });
   }
 
   async userProfile(req, res) {
@@ -104,7 +104,7 @@ class UserController {
     });
 
     if (!user) {
-      return res.status(400).json({ message: 'User not exists!' });
+      return res.status(400).json({ message: 'User not exists' });
     }
 
     const {
