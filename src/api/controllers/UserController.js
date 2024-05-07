@@ -20,6 +20,15 @@ class UserController {
       return res.status(400).json({ message: error.message });
     }
   }
+
+  async delete(req, res) {
+    try {
+      await userService.deleteUser(req.userId);
+      return res.status(200).json({ message: 'User deleted' });
+    } catch (error) {
+      return res.status(400).json({ message: error.message });
+    }
+  }
   
 }
 module.exports = new UserController();

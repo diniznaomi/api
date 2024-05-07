@@ -20,6 +20,14 @@ class UserRepository {
     return user;
   }
 
+  async deleteUser(userId){
+    await Users.destroy({
+      where: {
+        id: userId,
+      },
+    });
+  }
+
   async updateUser(userData, userId){
     console.log(userData, userId);
     await Users.update(

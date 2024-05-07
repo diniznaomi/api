@@ -19,6 +19,16 @@ class UserService {
     return user;
   }
 
+  async deleteUser(userId) {
+    const userFound = await this.userRepository.findById(userId);
+
+    if (!userFound) {
+      throw new Error('User not found');
+    };
+
+    await this.userRepository.deleteUser(userId);
+  };
+
   async updateUser(userData, userId) {
     const userFound = await this.userRepository.findById(userId);
 
@@ -31,7 +41,7 @@ class UserService {
       
       if(passwordsCheck){
         const encryptedNewPassword = await bcryptjs.hash(userData.new_password, 8);
-        console.log(encryptedNewPassword);
+
         this.userRepository.updateUserPassword(encryptedNewPassword, userId);
       }
     };
