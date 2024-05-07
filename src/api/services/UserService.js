@@ -6,6 +6,33 @@ class UserService {
     this.userRepository = new UserRepository();
   }
 
+  async getUser(userId){
+    const userFound = await this.userRepository.findById(userId);
+
+    if(!userFound){
+      throw new Error('User not found');
+    }
+
+    const user = { 
+      id: userFound.id, 
+      first_name: userFound.first_name, 
+      last_name: userFound.last_name, 
+      gender: userFound.gender, 
+      birth: userFound.birth, 
+      email: userFound.email, 
+      work_email: userFound.work_email, 
+      phone: userFound.phone, 
+      work_phone: userFound.work_phone, 
+      citizen_id: userFound.citizen_id,  
+      professional_id: userFound.professional_id,
+      business: userFound.business,
+      origin: userFound.origin,
+      pix: userFound.pix 
+    };
+
+    return user;
+  }
+
   async createUser(userData) {
     const { email } = userData;
 
