@@ -1,17 +1,23 @@
 const {Router} = require('express');
-const schemaValidator = require('./apps/middlewares/schemaValidator');
+const schemaValidator = require('./api/middlewares/schemaValidator');
 
-const UserController = require('./apps/controllers/UserController');
-const AuthenticationController = require('./apps/controllers/AuthenticationController');
+const UserController = require('./api/controllers/UserController');
+const AuthenticationController = require('./api/controllers/AuthenticationController');
+
+const AuthenticationMiddleware = require('./api/middlewares/authentication');
 
 const userSchema = require('./schema/create.user.schema.json');
 const authSchema = require('./schema/auth.schema.json');
 
 const routes = new Router();
 
-routes.post('/users', schemaValidator(userSchema), UserController.create);
+routes.post('/user', schemaValidator(userSchema), UserController.create);
 
 routes.post('/auth', schemaValidator(authSchema), AuthenticationController.authenticate);
+
+routes.use(AuthenticationMiddleware);
+
+routes.put('/user', UserController.update);
 
 routes.get('/health', (req, res) => {
     return res.send({message: 'connected sucsaaasesfully'});
