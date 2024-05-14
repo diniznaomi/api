@@ -1,5 +1,6 @@
 const UserRepository = require('../repositories/UserRepository');
 const bcryptjs = require('bcryptjs');
+const { dateConverter } = require('../../utils/dateConverter');
 
 class UserService {
   constructor() {
@@ -7,6 +8,7 @@ class UserService {
   }
 
   async getUser(userId){
+    console.log(userId);
     const userFound = await this.userRepository.findById(userId);
 
     if(!userFound){
@@ -42,6 +44,10 @@ class UserService {
       throw new Error('User already exists');
     }
 
+    if(userData.birth){
+      userData.birth = dateConverter(userData.birth);
+    }
+
     const user = await this.userRepository.createUser(userData);
     return user;
   }
@@ -72,6 +78,8 @@ class UserService {
         this.userRepository.updateUserPassword(encryptedNewPassword, userId);
       }
     };
+
+    userData.birth = dateConverter(userData.birth);
     
     this.userRepository.updateUser(userData, userId);
   };

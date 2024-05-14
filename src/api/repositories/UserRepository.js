@@ -32,10 +32,19 @@ class UserRepository {
     console.log(userData, userId);
     await Users.update(
       {
-        first_name: userData.first_name,
-        last_name: userData.last_name,
+        first_name: userData.first_name, 
+        last_name: userData.last_name, 
+        gender: userData.gender, 
+        birth: userData.birth, 
         email: userData.email, 
-        citizen_id: userData.citizen_id
+        work_email: userData.work_email, 
+        phone: userData.phone, 
+        work_phone: userData.work_phone, 
+        citizen_id: userData.citizen_id,  
+        professional_id: userData.professional_id,
+        business: userData.business,
+        origin: userData.origin,
+        pix: userData.pix 
       },
       {
         where: {
