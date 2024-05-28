@@ -1,0 +1,41 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "CreateClientSchema",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type":"string"
+        },
+         "citizen_id": {
+            "type":"string"
+        },
+        "phone": {
+            "type":"string"
+        },
+        "minority": {
+            "type":"boolean"
+        } ,
+        "guardian_name": {
+            "type":"string"
+        }, 
+        "guardian_citizen_id": {
+            "type":"string"
+        },  
+        "guardian_phone": {
+            "type":"string"
+        },   
+        "email": {
+            "type":"string"
+        },
+        "professional_id": {
+            "type":"integer"
+        },
+        "package_id": {
+            "type":"integer"
+        },
+        "payment_method_id": {
+            "type":"integer"
+        }
+    },
+    "required": ["name","minority","email","package_id", "payment_method_id"]
+}

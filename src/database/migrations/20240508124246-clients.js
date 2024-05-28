@@ -40,7 +40,7 @@ module.exports = {
       },
       professional_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       package_id: {
         type: Sequelize.INTEGER,
