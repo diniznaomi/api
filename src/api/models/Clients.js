@@ -11,7 +11,6 @@ class Clients extends Model {
         minority: Sequelize.BOOLEAN,
         guardian_name: Sequelize.STRING,
         guardian_citizen_id: Sequelize.STRING,
-        guardian_phone: Sequelize.STRING,
         email: Sequelize.STRING,
         professional_id: Sequelize.INTEGER,
         package_id: Sequelize.INTEGER,

@@ -8,7 +8,6 @@ class UserService {
   }
 
   async getUser(userId){
-    console.log(userId);
     const userFound = await this.userRepository.findById(userId);
 
     if(!userFound){

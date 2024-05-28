@@ -20,9 +20,6 @@
         }, 
         "guardian_citizen_id": {
             "type":"string"
-        },  
-        "guardian_phone": {
-            "type":"string"
         },   
         "email": {
             "type":"string"

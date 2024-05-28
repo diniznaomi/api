@@ -25,8 +25,13 @@ module.exports = {
       minority: {
         type: Sequelize.BOOLEAN,
         allowNull: true,
+        defaultValue: false,
       },
       guardian_name: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      guardian_phone: {
         type: Sequelize.STRING,
         allowNull: true,
       },

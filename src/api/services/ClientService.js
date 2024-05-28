@@ -23,11 +23,35 @@ class ClientService{
         return client;
     }
 
+    async getClientById(id){
+        const client = await this.clientRepository.findById(id);
+
+        if(!client){
+            throw new Error('Client not found');
+        }
+
+        const foundClient = {
+            name: client.name,
+            citizenId: client.citizen_id,
+            phone: client.phone,
+            minority: client.minority,
+            guardian: {
+                name: client.guardian_name,
+                citizenId: client.guardian_citizen_id,
+            },
+            email: client.email,
+            professionalId: client.professional_id,
+            packageId: client.package_id,
+            paymentMethodId: client.payment_method_id
+        }
+        return foundClient;
+    }
+
     async checkClientExistsByEmail(email) {
         const client = await this.clientRepository.findByEmail(email);
-        console.log(email)
         return !!client;
-      };
+    };
+
 };
 
 module.exports = ClientService;
