@@ -12,36 +12,43 @@ class ClientRepository {
     return client;
   }
 
+  async findAllByProfessionalId(professionalId) {
+    const clients = await Clients.findAll({ where: { professional_id: professionalId } });
+    return clients;
+  }
+
   async createClient(clientData) {
     const client = await Clients.create(clientData);
     return client;
   }
 
-  // async updateClient(clientData, clientId){
-  //   console.log(userData, userId);
-  //   await Users.update(
-  //     {
-  //       first_name: userData.first_name, 
-  //       last_name: userData.last_name, 
-  //       gender: userData.gender, 
-  //       birth: userData.birth, 
-  //       email: userData.email, 
-  //       work_email: userData.work_email, 
-  //       phone: userData.phone, 
-  //       work_phone: userData.work_phone, 
-  //       citizen_id: userData.citizen_id,  
-  //       professional_id: userData.professional_id,
-  //       business: userData.business,
-  //       origin: userData.origin,
-  //       pix: userData.pix 
-  //     },
-  //     {
-  //       where: {
-  //         id: userId,
-  //       },
-  //     },
-  //   );
-  // }
+  async updateClient(clientData, clientId){
+    await Clients.update(
+      {
+        name: clientData.name,
+        phone: clientData.phone,
+        minority: clientData.minority,
+        guardian_name: clientData.guardian_name,
+        guardian_citizen_id: clientData.guardian_citizen_id,
+        email: clientData.email,
+        package_id: clientData.package_id,
+        payment_method_id: clientData.payment_method_id
+      },
+      {
+        where: {
+          id: clientId,
+        },
+      },
+    );
+  }
+
+  async deleteClient(clientId){
+    await Clients.destroy({
+      where: {
+        id: clientId,
+      },
+    });
+  }
 }
 
 module.exports = ClientRepository;

@@ -10,6 +10,12 @@ router.post('/', schemaValidator(clientSchema), ClientsController.create);
 
 router.use(AuthenticationMiddleware);
 
-router.get('/:id', ClientsController.getClient);
+router.get('/:id', ClientsController.get);
+
+router.get('/all/:professionalId', ClientsController.getAllByProfessionalId);
+
+router.put('/:id', ClientsController.update);
+
+router.delete('/:id', ClientsController.delete);
 
 module.exports = router;
