@@ -14,7 +14,10 @@
         },
         "minority": {
             "type":"boolean"
-        } ,
+        },
+        "birth": {
+            "type":"string"
+        },  
         "guardian_name": {
             "type":"string"
         }, 

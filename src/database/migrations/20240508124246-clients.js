@@ -27,6 +27,10 @@ module.exports = {
         allowNull: true,
         defaultValue: false,
       },
+      birth: {
+        type: Sequelize.DATE,
+        allowNull: true,
+      },
       guardian_name: {
         type: Sequelize.STRING,
         allowNull: true,

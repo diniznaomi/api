@@ -9,6 +9,7 @@ class Clients extends Model {
         citizen_id: Sequelize.STRING,
         phone: Sequelize.STRING,
         minority: Sequelize.BOOLEAN,
+        birth: Sequelize.DATE,
         guardian_name: Sequelize.STRING,
         guardian_citizen_id: Sequelize.STRING,
         email: Sequelize.STRING,

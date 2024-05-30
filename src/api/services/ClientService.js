@@ -1,5 +1,6 @@
 const ClientRepository = require("../repositories/ClientRepository")
 const { dateConverter } = require("../../utils/dateConverter");
+const moment = require('moment');
 
 class ClientService{
     constructor() {
@@ -17,6 +18,7 @@ class ClientService{
     
         if(clientData.birth){
             clientData.birth = dateConverter(clientData.birth);
+            console.log(clientData.birth)
         }
     
         const client = await this.clientRepository.createClient(clientData);
@@ -35,6 +37,7 @@ class ClientService{
             citizenId: client.citizen_id,
             phone: client.phone,
             minority: client.minority,
+            birth: moment.utc(client.birth).format('DD-MM-YYYY'),
             guardian: {
                 name: client.guardian_name,
                 citizenId: client.guardian_citizen_id,
@@ -63,6 +66,7 @@ class ClientService{
                 citizenId: client.citizen_id,
                 phone: client.phone,
                 minority: client.minority,
+                birth: moment.utc(client.birth).format('DD-MM-YYYY'),
                 guardian: {
                     name: client.guardian_name,
                     citizenId: client.guardian_citizen_id,

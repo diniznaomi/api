@@ -28,6 +28,7 @@ class ClientRepository {
         name: clientData.name,
         phone: clientData.phone,
         minority: clientData.minority,
+        birth: clientData.birth,
         guardian_name: clientData.guardian_name,
         guardian_citizen_id: clientData.guardian_citizen_id,
         email: clientData.email,

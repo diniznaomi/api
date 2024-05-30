@@ -11,9 +11,9 @@
         },
         "gender": {
             "type":"string"
-        } ,
+        },
         "birth": {
-            "type":"date"
+            "type":"string"
         },    
         "email": {
             "type":"string"
