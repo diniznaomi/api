@@ -92,7 +92,7 @@ class ClientService{
         const clientFound = await this.clientRepository.findById(clientId);
     
         if (!clientFound) {
-          throw new Error('User not found');
+          throw new Error('Client not found');
         };
     
         await this.clientRepository.deleteClient(clientId);
