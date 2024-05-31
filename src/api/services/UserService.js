@@ -14,7 +14,7 @@ class UserService {
       throw new Error('User not found');
     }
 
-    const user = { 
+    return user = { 
       id: userFound.id, 
       first_name: userFound.first_name, 
       last_name: userFound.last_name, 
@@ -31,8 +31,7 @@ class UserService {
       pix: userFound.pix 
     };
 
-    return user;
-  }
+  };
 
   async createUser(userData) {
     const { email } = userData;
@@ -47,8 +46,7 @@ class UserService {
       userData.birth = dateConverter(userData.birth);
     }
 
-    const user = await this.userRepository.createUser(userData);
-    return user;
+    return await this.userRepository.createUser(userData);
   }
 
   async deleteUser(userId) {
@@ -80,7 +78,7 @@ class UserService {
 
     userData.birth = dateConverter(userData.birth);
     
-    this.userRepository.updateUser(userData, userId);
+    await this.userRepository.updateUser(userData, userId);
   };
 
   async checkUserExistsByEmail(email) {
@@ -89,8 +87,7 @@ class UserService {
   };
 
   async findUserByEmail(email) {
-    const user = await this.userRepository.findByEmail(email)
-    return user;
+    return await this.userRepository.findByEmail(email)
   };
 
   async checkPasswords(password, newPassword, confirmNewPassword, userFound){
