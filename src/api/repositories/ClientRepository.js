@@ -3,23 +3,19 @@ const Clients = require('../models/Clients');
 class ClientRepository {
 
   async findByEmail(email) {
-    const client = await Clients.findOne({ where: { email } });
-    return client;
+    return await Clients.findOne({ where: { email } });
   }
 
   async findById(clientId) {
-    const client = await Clients.findOne({ where: { id: clientId } });
-    return client;
+    return await Clients.findOne({ where: { id: clientId } });
   }
 
   async findAllByProfessionalId(professionalId) {
-    const clients = await Clients.findAll({ where: { professional_id: professionalId } });
-    return clients;
+    return await Clients.findAll({ where: { professional_id: professionalId } });
   }
 
   async createClient(clientData) {
-    const client = await Clients.create(clientData);
-    return client;
+    return await Clients.create(clientData);
   }
 
   async updateClient(clientData, clientId){

@@ -3,22 +3,19 @@ const Users = require('../models/Users');
 class UserRepository {
   
   async findByEmail(email) {
-    const user = await Users.findOne({ where: { email } });
-    return user;
+    return await Users.findOne({ where: { email } });
   }
 
   async findById(userId){
-    const user = await Users.findOne({
+    return await Users.findOne({
       where: {
         id: userId,
       },
     });
-    return user;
   }
 
   async createUser(userData) {
-    const user = await Users.create(userData);
-    return user;
+    return await Users.create(userData);
   }
 
   async deleteUser(userId){
@@ -30,7 +27,6 @@ class UserRepository {
   }
 
   async updateUser(userData, userId){
-    console.log(userData, userId);
     await Users.update(
       {
         first_name: userData.first_name, 
