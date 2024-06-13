@@ -1,0 +1,14 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "CreatePackageSchema",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type":"string"
+        },
+         "periodicityId": {
+            "type":"integer"
+        }
+    },
+    "required": ["name","periodicityId"]
+}

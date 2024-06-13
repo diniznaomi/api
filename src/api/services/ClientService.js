@@ -18,12 +18,10 @@ class ClientService{
     
         if(clientData.birth){
             clientData.birth = dateConverter(clientData.birth);
-            console.log(clientData.birth)
         }
     
-        const client = await this.clientRepository.createClient(clientData);
-        return client;
-    }
+        return await this.clientRepository.createClient(clientData);
+    };
 
     async getClientById(id){
         const client = await this.clientRepository.findById(id);
@@ -32,7 +30,7 @@ class ClientService{
             throw new Error('Client not found');
         }
 
-        const foundClient = {
+        return foundClient = {
             name: client.name,
             citizenId: client.citizen_id,
             phone: client.phone,
@@ -48,8 +46,7 @@ class ClientService{
             paymentMethodId: client.payment_method_id
         }
 
-        return foundClient;
-    }
+    };
 
     async getClientsByProfessionalId(professionalId){
         const clients = await this.clientRepository.findAllByProfessionalId(professionalId);
@@ -80,7 +77,7 @@ class ClientService{
         });
         
         return clientsList;
-    }
+    };
 
     async updateClient(clientData, clientId) {
         const clientFound = await this.clientRepository.findById(clientId);

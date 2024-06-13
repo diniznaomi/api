@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "CreatePaymentSchema",
+    "type": "object",
+    "properties": {
+        "value": {
+            "type":"string"
+        },
+        "package_id": {
+            "type": "string"
+        },
+        "payment_day": {
+            "type": "string"
+        },
+        "expiration": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string"
+        }
+    },
+    "required": ["value", "payment_day", "expiration", "status", "package_id"]
+}

@@ -10,7 +10,7 @@ class ClientController{
         } catch (error) {
             return res.status(400).json({ message: error.message });
         }
-    }
+    };
 
     async get(req, res){
         try {
@@ -20,7 +20,7 @@ class ClientController{
         } catch (error) {
             return res.status(400).json({ message: error.message });
         }
-    }
+    };
 
     async getAllByProfessionalId(req, res){
         try {
@@ -30,7 +30,7 @@ class ClientController{
         } catch (error) {
             return res.status(400).json({ message: error.message });
         }
-    }
+    };
 
     async update(req, res){
         try {
@@ -39,7 +39,7 @@ class ClientController{
         } catch (error) {
             return res.status(400).json({ message: error.message });
         }
-    }
+    };
 
     async delete(req, res) {
         try {
@@ -48,6 +48,6 @@ class ClientController{
         } catch (error) {
           return res.status(400).json({ message: error.message });
         }
-      }
+    };
 }
 module.exports = new ClientController();
