@@ -18,7 +18,6 @@ class ClientService{
     
         if(clientData.birth){
             clientData.birth = dateConverter(clientData.birth);
-            console.log(clientData.birth)
         }
     
         return await this.clientRepository.createClient(clientData);
