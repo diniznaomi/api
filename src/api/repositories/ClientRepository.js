@@ -3,11 +3,15 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const moment = require('moment');
 const Payments = require('../models/Payments');
+const Packages = require('../models/Packages');
+
 
 class ClientRepository {
-
-  async findClientsWithExpiringPayments() {
+  async findClientsWithExpiringPayments(professionalId) {
     return await Clients.findAll({
+        where: {
+            professional: professionalId
+        },
         include: [{
             model: Payments,
             as: 'payment',
@@ -16,9 +20,12 @@ class ClientRepository {
                     [Op.lte]: moment().add(3, 'days').toDate()
                 }
             }
+        }, {
+            model: Packages,
+            as: 'package'
         }]
     });
-  }
+}
 
   async findByEmail(email) {
     return await Clients.findOne({ where: { email } });

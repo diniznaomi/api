@@ -1,10 +1,14 @@
-const ClientRepository = require("../repositories/ClientRepository")
+const ClientRepository = require("../repositories/ClientRepository");
+const PaymentsRepository = require('../repositories/PaymentsRepository');
+const PackageRepository = require('../repositories/PackageRepository');
 const { dateConverter } = require("../../utils/dateConverter");
 const moment = require('moment');
 
 class ClientService{
     constructor() {
         this.clientRepository = new ClientRepository();
+        this.paymentRepository = new PaymentsRepository();
+        this.packageRepository = new PackageRepository();
     }
 
     async createClient(clientData) {
@@ -23,9 +27,27 @@ class ClientService{
         return await this.clientRepository.createClient(clientData);
     };
 
+
+    async findClientsWithExpiringPayments(professionalId) {
+        const clients = await this.clientRepository.findClientsWithExpiringPayments(professionalId);
+        const clientsList = clients.map(client => ({
+            name: client.name,
+            phone: client.phone,
+            email: client.email,
+            packageId: client.package_id,
+            paymentId: client.payment_id,
+            activeReminder: client.active_reminder,
+            packageName: client.package.name,
+            paymentDay: moment.utc(client.payment.payment_day).format('DD-MM-YYYY'),
+            expiration: moment.utc(client.payment.expiration).format('DD-MM-YYYY'),
+            value: client.payment.value
+        }));
+    
+        return clientsList;
+    };
+
     async getClientById(id){
         const client = await this.clientRepository.findById(id);
-        console.log(client)
 
         if(!client){
             throw new Error('Client not found');
@@ -44,7 +66,7 @@ class ClientService{
             email: client.email,
             professional: client.professional,
             packageId: client.package_id,
-            paymentMethodId: client.payment_id,
+            paymentId: client.payment_id,
             activeReminder: client.active_reminder
         }
 
@@ -73,7 +95,7 @@ class ClientService{
                 email: client.email,
                 professional: client.professional,
                 packageId: client.package_id,
-                paymentMethodId: client.payment_method_id,
+                paymentId: client.payment_id,
                 activeReminder: client.active_reminder
             }
             clientsList.push(foundClient);

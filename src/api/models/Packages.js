@@ -17,6 +17,10 @@ class Packages extends Model {
 
     return this;
   }
+
+  static associate(models) {
+    this.hasMany(models.Clients, { foreignKey: 'package_id', as: 'clients' });
+  }
 }
 
 module.exports = Packages;

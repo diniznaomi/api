@@ -17,8 +17,13 @@ class Payments extends Model {
         sequelize,
       },
     );
+    
 
     return this;
+  }
+  
+  static associate(models) {
+    this.hasMany(models.Clients, { foreignKey: 'payment_id', as: 'clients' });
   }
 }
 

@@ -16,7 +16,9 @@ class Database {
     this.connection = new Sequelize(databaseConfig);
 
     models
-      .map(model => model.init(this.connection));
+      .map(model => model.init(this.connection))
+      .filter(model => typeof model.associate === 'function')
+      .forEach(model => model.associate(this.connection.models));
   }
 }
 
