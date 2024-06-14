@@ -33,9 +33,12 @@
         "package_id": {
             "type":"integer"
         },
-        "payment_method_id": {
+        "payment_id": {
             "type":"integer"
+        },
+        "active_reminder": {
+            "type":"boolean"
         }
     },
-    "required": ["name","minority","email","package_id", "payment_method_id", "professional"]
+    "required": ["name","minority","email","package_id", "payment_id", "professional", "active_reminder"]
 }

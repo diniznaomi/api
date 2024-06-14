@@ -1,6 +1,24 @@
 const Clients = require('../models/Clients');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+const moment = require('moment');
+const Payments = require('../models/Payments');
 
 class ClientRepository {
+
+  async findClientsWithExpiringPayments() {
+    return await Clients.findAll({
+        include: [{
+            model: Payments,
+            as: 'payment',
+            where: {
+                expiration: {
+                    [Op.lte]: moment().add(3, 'days').toDate()
+                }
+            }
+        }]
+    });
+  }
 
   async findByEmail(email) {
     return await Clients.findOne({ where: { email } });
@@ -29,7 +47,8 @@ class ClientRepository {
         guardian_citizen_id: clientData.guardian_citizen_id,
         email: clientData.email,
         package_id: clientData.package_id,
-        payment_method_id: clientData.payment_method_id
+        payment_id: clientData.payment_id,
+        active_reminder: clientData.active_reminder
       },
       {
         where: {

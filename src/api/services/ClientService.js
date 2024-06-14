@@ -25,12 +25,13 @@ class ClientService{
 
     async getClientById(id){
         const client = await this.clientRepository.findById(id);
+        console.log(client)
 
         if(!client){
             throw new Error('Client not found');
         }
 
-        return foundClient = {
+        return {
             name: client.name,
             citizenId: client.citizen_id,
             phone: client.phone,
@@ -43,7 +44,8 @@ class ClientService{
             email: client.email,
             professional: client.professional,
             packageId: client.package_id,
-            paymentMethodId: client.payment_method_id
+            paymentMethodId: client.payment_id,
+            activeReminder: client.active_reminder
         }
 
     };
@@ -71,7 +73,8 @@ class ClientService{
                 email: client.email,
                 professional: client.professional,
                 packageId: client.package_id,
-                paymentMethodId: client.payment_method_id
+                paymentMethodId: client.payment_method_id,
+                activeReminder: client.active_reminder
             }
             clientsList.push(foundClient);
         });
