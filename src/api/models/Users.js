@@ -21,6 +21,7 @@ class Users extends Model {
         business: Sequelize.STRING,
         origin: Sequelize.STRING,
         pix: Sequelize.STRING,
+        active_reminder: Sequelize.BOOLEAN,
         created_at: Sequelize.DATE,
         updated_at: Sequelize.DATE,
       },

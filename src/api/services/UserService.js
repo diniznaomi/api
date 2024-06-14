@@ -28,7 +28,8 @@ class UserService {
       professional_id: userFound.professional_id,
       business: userFound.business,
       origin: userFound.origin,
-      pix: userFound.pix 
+      pix: userFound.pix,
+      active_reminder: userFound.active_reminder
     };
 
   };

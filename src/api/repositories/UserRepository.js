@@ -41,7 +41,8 @@ class UserRepository {
         professional_id: userData.professional_id,
         business: userData.business,
         origin: userData.origin,
-        pix: userData.pix 
+        pix: userData.pix,
+        active_reminder: userData.active_reminder
       },
       {
         where: {
