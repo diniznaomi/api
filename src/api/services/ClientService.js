@@ -41,15 +41,15 @@ class ClientService{
                 citizenId: client.guardian_citizen_id,
             },
             email: client.email,
-            professionalId: client.professional_id,
+            professional: client.professional,
             packageId: client.package_id,
             paymentMethodId: client.payment_method_id
         }
 
     };
 
-    async getClientsByProfessionalId(professionalId){
-        const clients = await this.clientRepository.findAllByProfessionalId(professionalId);
+    async getClientsByProfessional(professional){
+        const clients = await this.clientRepository.findAllByProfessional(professional);
 
         if(!clients){
             throw new Error('Client not found');
@@ -69,7 +69,7 @@ class ClientService{
                     citizenId: client.guardian_citizen_id,
                 },
                 email: client.email,
-                professionalId: client.professional_id,
+                professional: client.professional,
                 packageId: client.package_id,
                 paymentMethodId: client.payment_method_id
             }

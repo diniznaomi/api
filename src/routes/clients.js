@@ -12,7 +12,7 @@ router.use(AuthenticationMiddleware);
 
 router.get('/:id', ClientsController.get);
 
-router.get('/all/:professionalId', ClientsController.getAllByProfessionalId);
+router.get('/all/:professional', ClientsController.getAllByProfessional);
 
 router.put('/:id', ClientsController.update);
 

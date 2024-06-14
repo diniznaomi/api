@@ -10,8 +10,8 @@ class ClientRepository {
     return await Clients.findOne({ where: { id: clientId } });
   }
 
-  async findAllByProfessionalId(professionalId) {
-    return await Clients.findAll({ where: { professional_id: professionalId } });
+  async findAllByProfessional(professional) {
+    return await Clients.findAll({ where: { professional: professional } });
   }
 
   async createClient(clientData) {

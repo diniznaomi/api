@@ -27,7 +27,7 @@
         "email": {
             "type":"string"
         },
-        "professional_id": {
+        "professional": {
             "type":"integer"
         },
         "package_id": {
@@ -37,5 +37,5 @@
             "type":"integer"
         }
     },
-    "required": ["name","minority","email","package_id", "payment_method_id"]
+    "required": ["name","minority","email","package_id", "payment_method_id", "professional"]
 }

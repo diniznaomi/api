@@ -47,7 +47,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      professional_id: {
+      professional: {
         type: Sequelize.INTEGER,
         allowNull: true,
       },
@@ -55,7 +55,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      payment_method_id: {
+      payment_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },

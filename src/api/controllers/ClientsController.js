@@ -22,10 +22,10 @@ class ClientController{
         }
     };
 
-    async getAllByProfessionalId(req, res){
+    async getAllByProfessional(req, res){
         try {
-            const { professionalId } = req.params;
-            const clients = await clientService.getClientsByProfessionalId(professionalId);
+            const { professional } = req.params;
+            const clients = await clientService.getClientsByProfessional(professional);
             return res.status(200).status(200).json({ clients });
         } catch (error) {
             return res.status(400).json({ message: error.message });
