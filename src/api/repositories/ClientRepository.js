@@ -7,11 +7,8 @@ const Packages = require('../models/Packages');
 
 
 class ClientRepository {
-  async findClientsWithExpiringPayments(professionalId) {
+  async findClientsWithExpiringPayments() {
     return await Clients.findAll({
-        where: {
-            professional: professionalId
-        },
         include: [{
             model: Payments,
             as: 'payment',

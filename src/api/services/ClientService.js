@@ -28,8 +28,8 @@ class ClientService{
     };
 
 
-    async findClientsWithExpiringPayments(professionalId) {
-        const clients = await this.clientRepository.findClientsWithExpiringPayments(professionalId);
+    async findClientsWithExpiringPayments() {
+        const clients = await this.clientRepository.findClientsWithExpiringPayments();
         const clientsList = clients.map(client => ({
             name: client.name,
             phone: client.phone,
@@ -47,6 +47,7 @@ class ClientService{
     };
 
     async getClientById(id){
+        console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
         const client = await this.clientRepository.findById(id);
 
         if(!client){
