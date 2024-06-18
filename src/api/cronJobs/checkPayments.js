@@ -27,8 +27,8 @@ const changeStatusToLate = async (client) => {
     // Lógica para alterar o status do cliente para "L"
 }
 
-// Cron job para executar todos os dias às 10h
-cron.schedule('* 10 * * *', async () => {
+// Cron job para executar todos os dias às 11h
+cron.schedule('00 11 * * *', async () => {
     try {
         const clients = await clientService.findClientsWithExpiringPayments();
         const currentDate = moment();
