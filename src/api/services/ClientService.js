@@ -38,8 +38,8 @@ class ClientService{
             paymentId: client.payment_id,
             activeReminder: client.active_reminder,
             packageName: client.package.name,
-            paymentDay: moment.utc(client.payment.payment_day).format('DD-MM-YYYY'),
-            expiration: moment.utc(client.payment.expiration).format('DD-MM-YYYY'),
+            paymentDay: client.payment.payment_day,
+            expiration: client.payment.expiration,
             value: client.payment.value
         }));
     

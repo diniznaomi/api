@@ -24,7 +24,6 @@ class EmailService {
 
     try {
       await this.transporter.sendMail(mailOptions);
-      throw new Error('Email successfully sent!');
     } catch (error) {
         throw new Error('Error sending email:', error);
     }

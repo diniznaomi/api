@@ -1,5 +1,6 @@
 require('dotenv').config();
 require('./database/index');
+require('./api/cronJobs/checkPayments');
 
 const express = require('express');
 const routes = require('./routes/index');
