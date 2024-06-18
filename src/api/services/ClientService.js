@@ -27,7 +27,6 @@ class ClientService{
         return await this.clientRepository.createClient(clientData);
     };
 
-
     async findClientsWithExpiringPayments() {
         const clients = await this.clientRepository.findClientsWithExpiringPayments();
         const clientsList = clients.map(client => ({
