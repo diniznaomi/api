@@ -10,11 +10,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      first_name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      last_name: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -30,45 +26,17 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      password_hash: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      work_email: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      phone: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      work_phone: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      citizen_id: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      professional_id: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      business: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
       origin: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      pix: {
+      role: {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      active_reminder: {
-        type: Sequelize.BOOLEAN,
-        allowNull: true,
+      password_hash: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,

@@ -3,10 +3,7 @@
     "title": "CreateUserSchema",
     "type": "object",
     "properties": {
-        "first_name": {
-            "type":"string"
-        },
-        "last_name": {
+        "name": {
             "type":"string"
         },
         "gender": {
@@ -21,30 +18,12 @@
         "password": {
             "type":"string"
         },
-        "work_email": {
-            "type":"string"
-        },
-        "phone": {
-            "type":"string"
-        },
-        "work_phone": {
-            "type":"string"
-        },
-        "citizen_id": {
-            "type":"string"
-        },
-        "professional_id": {
-            "type":"string"
-        },
-        "business": {
-            "type":"string"
-        },
         "origin": {
             "type":"string"
         },
-        "pix": {
+        "role": {
             "type":"string"
         }
     },
-    "required": ["first_name","last_name","email","password"]
+    "required": ["name","email","password"]
 }

@@ -29,20 +29,12 @@ class UserRepository {
   async updateUser(userData, userId){
     await Users.update(
       {
-        first_name: userData.first_name, 
-        last_name: userData.last_name, 
+        name: userData.name, 
         gender: userData.gender, 
         birth: userData.birth, 
         email: userData.email, 
-        work_email: userData.work_email, 
-        phone: userData.phone, 
-        work_phone: userData.work_phone, 
-        citizen_id: userData.citizen_id,  
-        professional_id: userData.professional_id,
-        business: userData.business,
         origin: userData.origin,
-        pix: userData.pix,
-        active_reminder: userData.active_reminder
+        role: userData.role,
       },
       {
         where: {

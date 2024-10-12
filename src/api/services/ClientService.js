@@ -46,7 +46,6 @@ class ClientService{
     };
 
     async getClientById(id){
-        console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
         const client = await this.clientRepository.findById(id);
 
         if(!client){

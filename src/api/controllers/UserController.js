@@ -1,4 +1,4 @@
-const UserService = require('../services/UserService');
+const UserService = require('../services/User/UserService');
 const userService = new UserService();
 
 class UserController {
@@ -14,7 +14,8 @@ class UserController {
 
   async update(req, res) {
     try {
-      await userService.updateUser(req.body, req.userId);
+      const userId = parseInt(req.params.id)
+      await userService.updateUser(req.body, userId);
       return res.status(200).json({ message: 'User updated' });
     } catch (error) {
       return res.status(400).json({ message: error.message });
@@ -23,7 +24,8 @@ class UserController {
 
   async delete(req, res) {
     try {
-      await userService.deleteUser(req.userId);
+      const userId = parseInt(req.params.id)
+      await userService.deleteUser(userId);
       return res.status(200).json({ message: 'User deleted' });
     } catch (error) {
       return res.status(400).json({ message: error.message });
@@ -32,7 +34,8 @@ class UserController {
 
   async getUser(req, res){
     try {
-      const user = await userService.getUser(req.userId);
+      const userId = parseInt(req.params.id)
+      const user = await userService.getUser(userId);
       return res.status(200).status(200).json({ user });
     } catch (error) {
       return res.status(400).json({ message: error.message });

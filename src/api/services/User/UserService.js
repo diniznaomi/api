@@ -1,6 +1,6 @@
-const UserRepository = require('../repositories/UserRepository');
+const UserRepository = require('../../repositories/UserRepository');
 const bcryptjs = require('bcryptjs');
-const { dateConverter } = require('../../utils/dateConverter');
+const { dateConverter } = require('../../../utils/dateConverter');
 
 class UserService {
   constructor() {
@@ -14,23 +14,17 @@ class UserService {
       throw new Error('User not found');
     }
 
-    return user = { 
+    const user = {
       id: userFound.id, 
-      first_name: userFound.first_name, 
-      last_name: userFound.last_name, 
+      name: userFound.name, 
       gender: userFound.gender, 
       birth: userFound.birth, 
       email: userFound.email, 
-      work_email: userFound.work_email, 
-      phone: userFound.phone, 
-      work_phone: userFound.work_phone, 
-      citizen_id: userFound.citizen_id,  
-      professional_id: userFound.professional_id,
-      business: userFound.business,
       origin: userFound.origin,
-      pix: userFound.pix,
-      active_reminder: userFound.active_reminder
-    };
+      role: userFound.role,
+    }
+
+    return user;
 
   };
 
