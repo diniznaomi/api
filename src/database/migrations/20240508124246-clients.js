@@ -59,6 +59,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      active_reminder: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,

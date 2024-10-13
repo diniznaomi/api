@@ -1,17 +1,17 @@
 const Sequelize = require('sequelize');
 const { Model } = require('sequelize');
 
-class Packages extends Model {
+class Company extends Model {
   static init(sequelize) {
     super.init(
       {
         name: Sequelize.STRING,
-        periodicity: Sequelize.STRING,
         created_at: Sequelize.DATE,
         updated_at: Sequelize.DATE,
       },
       {
         sequelize,
+        underscored: true,
       },
     );
 
@@ -19,8 +19,9 @@ class Packages extends Model {
   }
 
   static associate(models) {
-    this.hasMany(models.Clients, { foreignKey: 'package_id', as: 'clients' });
+    this.hasMany(models.User, { foreignKey: 'company_id', as: 'employees' });
+    this.belongsToMany(models.Office, { through: 'Company_Office', foreignKey: 'company_id', as: 'offices' });
   }
 }
 
-module.exports = Packages;
+module.exports = Company;

@@ -16,6 +16,7 @@ class Clients extends Model {
         professional: Sequelize.INTEGER,
         package_id: Sequelize.INTEGER,
         payment_id: Sequelize.INTEGER,
+        active_reminder: Sequelize.BOOLEAN,
         created_at: Sequelize.DATE,
         updated_at: Sequelize.DATE,
       },
@@ -25,6 +26,10 @@ class Clients extends Model {
     );
 
     return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Payments, { foreignKey: 'payment_id', as: 'payment' });
   }
 }
 

@@ -17,6 +17,10 @@ class PaymentsService {
         return await this.paymentsRepository.createPayment(paymentData);
     }
 
+    async changeStatusToLate(clientId) {
+        await this.paymentsRepository.changeStatusToLate(clientId);
+    }
+
     async delete(paymentId) {
         return await this.paymentsRepository.deletePayment(paymentId);
     }

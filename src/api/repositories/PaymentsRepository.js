@@ -17,6 +17,19 @@ class PaymentsRepository {
           },
         });
     };
+
+    async changeStatusToLate(paymentId) {
+      await Payments.update(
+        {
+          status: 'L'
+        },
+        {
+          where: {
+            id: paymentId,
+          },
+        },
+      )
+    };
     
 };
 

@@ -1,11 +1,27 @@
 const Sequelize = require('sequelize');
-const Users = require('../api/models/Users');
 const Clients = require('../api/models/Clients');
-const Packages = require('../api/models/Packages');
 const Payments = require('../api/models/Payments');
+const Company = require('../api/models/Company');
+const Department = require('../api/models/Department');
+const Team = require('../api/models/Team');
+const User = require('../api/models/User');
+const Office = require('../api/models/Office');
+const Post = require('../api/models/Post');
 
-const models = [Users, Clients, Packages, Payments];
 const databaseConfig = require('../configs/db');
+const Like = require('../api/models/Like');
+
+const models = [
+  User, 
+  Clients, 
+  Payments, 
+  Company,
+  Post,
+  Department,
+  Team,
+  Office,
+  Like
+];
 
 class Database {
   constructor() {
@@ -14,9 +30,10 @@ class Database {
 
   init() {
     this.connection = new Sequelize(databaseConfig);
-
     models
-      .map(model => model.init(this.connection));
+      .map(model => model.init(this.connection))
+      .filter(model => typeof model.associate === 'function')
+      .forEach(model => model.associate(this.connection.models));
   }
 }
 
