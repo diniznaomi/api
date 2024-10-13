@@ -1,6 +1,6 @@
 const ClientRepository = require("../repositories/ClientRepository");
 const PaymentsRepository = require('../repositories/PaymentsRepository');
-const PackageRepository = require('../repositories/PackageRepository');
+const PackageRepository = require('../repositories/CompanyRepository');
 const { dateConverter } = require("../../utils/dateConverter");
 const moment = require('moment');
 
@@ -49,7 +49,7 @@ class ClientService{
         const client = await this.clientRepository.findById(id);
 
         if(!client){
-            throw new Error('Client not found');
+            return [];
         }
 
         return {

@@ -17,10 +17,9 @@ class UserService {
     const user = {
       id: userFound.id, 
       name: userFound.name, 
-      gender: userFound.gender, 
       birth: userFound.birth, 
       email: userFound.email, 
-      origin: userFound.origin,
+      company_id: userFound.company_id,
       role: userFound.role,
     }
 

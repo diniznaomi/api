@@ -7,11 +7,9 @@ const AuthenticationMiddleware = require('../api/middlewares/authentication');
 const router = Router();
 
 router.post('/', schemaValidator(userSchema), UserController.create);
-
+router.get('/:id', UserController.getUser);
+router.put('/:id', UserController.update);
+router.delete('/:id', UserController.delete);
 router.use(AuthenticationMiddleware);
-
-router.put('/', UserController.update);
-router.delete('/', UserController.delete);
-router.get('/', UserController.getUser);
 
 module.exports = router;

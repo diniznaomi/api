@@ -6,24 +6,21 @@
         "name": {
             "type":"string"
         },
-        "gender": {
-            "type":"string"
-        },
         "birth": {
             "type":"string"
-        },    
+        },
         "email": {
             "type":"string"
         },
         "password": {
             "type":"string"
         },
-        "origin": {
+        "company_id": {
             "type":"string"
         },
         "role": {
             "type":"string"
         }
     },
-    "required": ["name","email","password"]
+    "required": ["name","email","password", "company_id", "role"]
 }

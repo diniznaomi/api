@@ -1,13 +1,13 @@
-const Users = require('../models/Users');
+const User = require("../models/User");
 
 class UserRepository {
   
   async findByEmail(email) {
-    return await Users.findOne({ where: { email } });
+    return await User.findOne({ where: { email } });
   }
 
   async findById(userId){
-    return await Users.findOne({
+    return await User.findOne({
       where: {
         id: userId,
       },
@@ -15,11 +15,11 @@ class UserRepository {
   }
 
   async createUser(userData) {
-    return await Users.create(userData);
+    return await User.create(userData);
   }
 
   async deleteUser(userId){
-    await Users.destroy({
+    await User.destroy({
       where: {
         id: userId,
       },
@@ -27,13 +27,13 @@ class UserRepository {
   }
 
   async updateUser(userData, userId){
-    await Users.update(
+    await User.update(
       {
         name: userData.name, 
         gender: userData.gender, 
         birth: userData.birth, 
         email: userData.email, 
-        origin: userData.origin,
+        company_id: userData.company_id,
         role: userData.role,
       },
       {
@@ -45,7 +45,7 @@ class UserRepository {
   }
 
   async updateUserPassword(encryptedPassword, userId){
-    await Users.update(
+    await User.update(
       {
         password_hash: encryptedPassword,
       },

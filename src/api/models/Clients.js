@@ -30,7 +30,6 @@ class Clients extends Model {
 
   static associate(models) {
     this.belongsTo(models.Payments, { foreignKey: 'payment_id', as: 'payment' });
-    this.belongsTo(models.Packages, { foreignKey: 'package_id', as: 'package' });
   }
 }
 
