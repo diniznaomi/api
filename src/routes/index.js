@@ -1,21 +1,15 @@
 const { Router } = require('express');
 
-const userRoutes = require('./users');
-const clientRoutes = require('./clients');
-const companyRoutes = require('./Company');
-const paymentRoutes = require('./payments');
+const usersRoutes = require('./users');
+const companiesRoutes = require('./Companies');
 const authRoutes = require('./auth');
-const healthRoutes = require('./health');
-const postRoutes = require('./post');
+const postsRoutes = require('./posts');
 
 const routes = Router();
 
-routes.use('/user', userRoutes);
-routes.use('/client', clientRoutes);
-routes.use('/company', companyRoutes);
-routes.use('/payments', paymentRoutes);
+routes.use('/users', usersRoutes);
+routes.use('/companies', companiesRoutes);
 routes.use('/auth', authRoutes);
-routes.use('/health', healthRoutes);
-routes.use('/post', postRoutes);
+routes.use('/posts', postsRoutes);
 
 module.exports = routes;

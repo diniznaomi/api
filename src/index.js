@@ -1,6 +1,5 @@
 require('dotenv').config();
 require('./database/index');
-require('./api/cronJobs/checkPayments');
 
 const express = require('express');
 const cors = require('cors'); 
