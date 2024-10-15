@@ -1,4 +1,4 @@
-const PostService = require('../services/Post/PostService');
+const PostService = require('../services/Posts/PostService');
 const postService = new PostService();
 
 class PostController {
@@ -13,8 +13,21 @@ class PostController {
 
     async createPost(req, res){
         try {
-            await postService.createPost(req.body);
+            const postData = req.body;
+            const userId = req.userId; 
+            await postService.createPost(postData, userId);
             return res.status(200).json({ message: "Post created" });
+        } catch (error) {
+            return res.status(400).json({ message: error.message });
+        }
+    }
+
+    async likePost(req, res) {
+        try {
+            const { postId } = req.params; 
+            const userId = req.userId; 
+            await postService.addLikeToPost(postId, userId);
+            return res.status(200).json({ message: 'Post liked successfully' });
         } catch (error) {
             return res.status(400).json({ message: error.message });
         }

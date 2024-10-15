@@ -21,7 +21,7 @@ class Post extends Model {
   static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'user_id', as: 'author' });
     this.belongsTo(models.User, { foreignKey: 'to_user_id', as: 'recipient' });
-    this.hasMany(models.Like, { foreignKey: 'post_id', as: 'likes' }); // Associando os likes ao post
+    this.hasMany(models.Like, { foreignKey: 'post_id', as: 'likes' }); 
   }
 }
 

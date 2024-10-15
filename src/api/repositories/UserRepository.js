@@ -1,3 +1,7 @@
+const Company = require("../models/Company");
+const Department = require("../models/Department");
+const Post = require("../models/Post");
+const Team = require("../models/Team");
 const User = require("../models/User");
 
 class UserRepository {
@@ -6,17 +10,32 @@ class UserRepository {
     return await User.findOne({ where: { email } });
   }
 
-  async findById(userId){
+  async findById(userId) {
     return await User.findOne({
-      where: {
-        id: userId,
-      },
+        where: { id: userId },
+        include: [
+            { model: Company, as: 'company' },
+            { model: Post, as: 'authorPosts' },
+            { model: Post, as: 'recipientPosts' },
+            { model: Department, as: 'departments' },
+            { model: Team, as: 'teams' }
+        ],
     });
+}
+
+async createUser(userData, departmentIds, teamIds) {
+  const user = await User.create(userData);
+  
+  if (departmentIds && departmentIds.length > 0) {
+    await user.setDepartments(departmentIds); 
+  }
+  
+  if (teamIds && teamIds.length > 0) {
+    await user.setTeams(teamIds); 
   }
 
-  async createUser(userData) {
-    return await User.create(userData);
-  }
+  return user;
+}
 
   async deleteUser(userId){
     await User.destroy({

@@ -37,13 +37,24 @@ class PostService {
                     }
                 })) : []
             };
-        });        
+        }); 
     
-        return mapResponse;
+        return mapResponse.sort((a,b) => b.createdAt - a.createdAt);
     }    
 
-    async createPost(post){
-        return this.postRepository.createPost(post);
+    async createPost(postData, userId) {
+        return this.postRepository.createPost(postData.message, userId, postData.to_user_id);
     }
+
+    async addLikeToPost(postId, userId) {
+        const post = await this.postRepository.findPostById(postId);
+    
+        if (!post) {
+            throw new Error('Post not found');
+        }
+    
+        return await this.postRepository.addLike(postId, userId);
+    }
+    
 }
 module.exports = PostService;

@@ -28,7 +28,7 @@ class User extends Model {
 
     this.addHook('beforeSave', async (user) => {
       if(user.password){
-        user.password_hash = await bcryptjs.hash(user.password, 8)
+        user.password_hash = await bcryptjs.hash(user.password, 8);
       }
     });
 
@@ -41,9 +41,11 @@ class User extends Model {
 
   static associate(models) {
     this.belongsTo(models.Company, { foreignKey: 'company_id', as: 'company' });
-    this.belongsToMany(models.Department, { through: 'User_Department', foreignKey: 'user_id', as: 'departments' });
-    this.belongsToMany(models.Team, { through: 'User_Team', foreignKey: 'user_id', as: 'teams' });
+    this.belongsToMany(models.Department, { through: 'user_department', foreignKey: 'user_id', as: 'departments' }); // Ajustar para user_department
+    this.belongsToMany(models.Team, { through: 'user_team', foreignKey: 'user_id', as: 'teams' }); // Ajustar para user_team
     this.hasMany(models.Like, { foreignKey: 'liked_by_user_id', as: 'likes' });
+    this.hasMany(models.Post, { foreignKey: 'user_id', as: 'authorPosts' });
+    this.hasMany(models.Post, { foreignKey: 'to_user_id', as: 'recipientPosts' });
   }
 }
 

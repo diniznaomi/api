@@ -7,27 +7,32 @@ class UserService {
     this.userRepository = new UserRepository();
   }
 
-  async getUser(userId){
+  async getUser(userId) {
     const userFound = await this.userRepository.findById(userId);
 
-    if(!userFound){
-      throw new Error('User not found');
+    if (!userFound) {
+        throw new Error('User not found');
     }
 
     const user = {
-      id: userFound.id, 
-      name: userFound.name, 
-      birth: userFound.birth, 
-      email: userFound.email, 
-      company_id: userFound.company_id,
-      role: userFound.role,
-    }
+        id: userFound.id,
+        name: userFound.name,
+        birth: userFound.birth,
+        email: userFound.email,
+        company: userFound.company ? userFound.company.name : null,
+        role: userFound.role,
+        postsCreated: userFound.authorPosts ? userFound.authorPosts.length : 0,
+        postsReceived: userFound.recipientPosts ? userFound.recipientPosts.length : 0,
+        departments: userFound.departments ? userFound.departments.map(department => department.department_name) : [],
+        teams: userFound.teams ? userFound.teams.map(team => team.team_name) : []
+    };
 
     return user;
+}
 
-  };
 
   async createUser(userData) {
+    const {departmentIds, teamIds} = userData;
     const { email } = userData;
 
     const userExists = await this.checkUserExistsByEmail(email);
@@ -40,7 +45,7 @@ class UserService {
       userData.birth = dateConverter(userData.birth);
     }
 
-    return await this.userRepository.createUser(userData);
+    return await this.userRepository.createUser(userData, departmentIds, teamIds);
   }
 
   async deleteUser(userId) {

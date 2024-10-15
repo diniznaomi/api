@@ -10,5 +10,6 @@ router.use(AuthenticationMiddleware);
 
 router.post('/', schemaValidator(postSchema), PostController.createPost);
 router.get('/:id', PostController.listPostsByCompany);
+router.post('/:postId/like',  PostController.likePost);
 
 module.exports = router;

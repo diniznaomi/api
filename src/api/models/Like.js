@@ -19,7 +19,7 @@ class Like extends Model {
 
     static associate(models) {
         this.belongsTo(models.Post, { foreignKey: 'post_id', as: 'post' });
-        this.belongsTo(models.User, { foreignKey: 'liked_by_user_id', as: 'user' }); 
+        this.belongsTo(models.User, { foreignKey: 'liked_by_user_id', as: 'user' });
     }
 }
 
