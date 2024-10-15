@@ -8,10 +8,7 @@
         },
         "to_user_id": {
             "type": "string"
-        },
-        "user_id": {
-            "type": "string"
         }
     },
-"required": ["message", "to_user_id", "user_id"]
+"required": ["message", "to_user_id"]
 }
