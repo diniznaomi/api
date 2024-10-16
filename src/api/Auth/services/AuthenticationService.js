@@ -27,7 +27,7 @@ class AuthenticationService {
             throw new Error('Invalid credentials');
         };
 
-        const { id, email: userEmail } = user;
+        const { id, email: userEmail, company_id } = user;
     
         const { iv, content } = encrypt(id);
     
@@ -37,7 +37,7 @@ class AuthenticationService {
            expiresIn: process.env.EXPIRE_IN,
         });
 
-        return ({ user: {id, userEmail}, token });
+        return ({ user: {id, userEmail, company_id}, token });
     };
 }
 module.exports = AuthenticationService;
