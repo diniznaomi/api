@@ -1,8 +1,10 @@
+const UsersService = require("../../Users/services/UsersService");
 const PostsRepository = require("../repositories/PostsRepository");
 
 class PostsService {
     constructor() {
         this.postRepository = new PostsRepository;
+        this.usersServices = new UsersService;
     }
 
     async listPostsByCompany(company_id) {
@@ -43,7 +45,8 @@ class PostsService {
     }    
 
     async createPost(postData, userId) {
-        return this.postRepository.createPost(postData.message, userId, postData.to_user_id);
+        const toUser = await this.usersServices.findUserByEmail(postData.to_user_email)
+        return this.postRepository.createPost(postData.message, userId, toUser.id);
     }
 
     async addLikeToPost(postId, userId) {

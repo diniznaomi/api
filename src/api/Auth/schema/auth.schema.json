@@ -5,13 +5,10 @@
     "properties": {
         "email": {
             "type":"string"
-        },
-        "citizen_id": {
-            "type":"string"
-        } ,    
+        },   
         "password": {
             "type":"string"
         }
     },
-    "required": ["password"]
+    "required": ["email", "password"]
 }

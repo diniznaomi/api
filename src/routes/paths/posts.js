@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const AuthenticationMiddleware = require('../api/middlewares/authentication');
-const PostsController = require('../api/Posts/PostsController');
-const schemaValidator = require('../api/middlewares/schemaValidator');
-const postSchema = require('../api/Posts/schema/create.post.schema.json');
+const AuthenticationMiddleware = require('../../api/middlewares/authentication');
+const PostsController = require('../../api/Posts/PostsController');
+const schemaValidator = require('../../api/middlewares/schemaValidator');
+const postSchema = require('../../api/Posts/schema/create.post.schema.json');
 
 const router = Router();
 

@@ -19,13 +19,13 @@ class AuthenticationService {
         
         if (!user) {
         throw new Error('User not found');
-        }
+        };
 
         const validatePassword = await user.checkPassword(password);
 
         if (!validatePassword) {
             throw new Error('Invalid credentials');
-        }
+        };
 
         const { id, email: userEmail } = user;
     

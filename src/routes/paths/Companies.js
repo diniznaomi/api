@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const schemaValidator = require('../api/middlewares/schemaValidator');
-const companySchema = require('../api/Companies/schema/create.company.schema.json');
-const AuthenticationMiddleware = require('../api/middlewares/authentication');
-const CompaniesController = require('../api/Companies/CompaniesController');
+const schemaValidator = require('../../api/middlewares/schemaValidator');
+const companySchema = require('../../api/Companies/schema/create.company.schema.json');
+const AuthenticationMiddleware = require('../../api/middlewares/authentication');
+const CompaniesController = require('../../api/Companies/CompaniesController');
 
 const router = Router();
 

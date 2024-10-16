@@ -6,9 +6,9 @@
         "message": {
             "type":"string"
         },
-        "to_user_id": {
+        "to_user_email": {
             "type": "string"
         }
     },
-"required": ["message", "to_user_id"]
+"required": ["message", "to_user_email"]
 }
