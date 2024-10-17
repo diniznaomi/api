@@ -1,26 +1,24 @@
 const Sequelize = require('sequelize');
-const Clients = require('../api/models/Clients');
-const Payments = require('../api/models/Payments');
-const Company = require('../api/models/Company');
-const Department = require('../api/models/Department');
-const Team = require('../api/models/Team');
-const User = require('../api/models/User');
-const Office = require('../api/models/Office');
-const Post = require('../api/models/Post');
+const Company = require('../api/Companies/models/Company');
+const Department = require('../api/Companies/models/Department');
+const Team = require('../api/Companies/models/Team');
+const User = require('../api/Users/models/User');
+const Office = require('../api/Companies/models/Office');
+const Post = require('../api/Posts/models/Post');
+const Like = require('../api/Posts/models/Like');
+const Reservation = require('../api/Companies/models/Reservation');
 
-const databaseConfig = require('../configs/db');
-const Like = require('../api/models/Like');
+const databaseConfig = require('./configs/db');
 
 const models = [
   User, 
-  Clients, 
-  Payments, 
   Company,
   Post,
   Department,
   Team,
   Office,
-  Like
+  Like,
+  Reservation
 ];
 
 class Database {
