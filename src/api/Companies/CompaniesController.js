@@ -1,4 +1,6 @@
 const CompaniesService = require("./services/CompaniesService");
+const ReservationService = require('./services/ReservationsService');
+const reservationService = new ReservationService();
 const companiesService = new CompaniesService();
 
 class CompaniesController {
@@ -39,6 +41,16 @@ class CompaniesController {
           return res.status(400).json({ message: error.message });
         }
     };
+
+    async createReservation(req, res) {
+        try {
+          const { officeId, reservationDate, userId } = req.body;
+          const reservation = await reservationService.createReservation(userId, officeId, reservationDate);
+          return res.status(201).json(reservation);
+        } catch (error) {
+          return res.status(400).json({ message: error.message });
+        }
+      }
 };
 
 module.exports = new CompaniesController();

@@ -5,9 +5,10 @@ const Team = require('../api/Companies/models/Team');
 const User = require('../api/Users/models/User');
 const Office = require('../api/Companies/models/Office');
 const Post = require('../api/Posts/models/Post');
+const Like = require('../api/Posts/models/Like');
+const Reservation = require('../api/Companies/models/Reservation');
 
 const databaseConfig = require('./configs/db');
-const Like = require('../api/Posts/models/Like');
 
 const models = [
   User, 
@@ -16,7 +17,8 @@ const models = [
   Department,
   Team,
   Office,
-  Like
+  Like,
+  Reservation
 ];
 
 class Database {

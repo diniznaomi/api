@@ -16,4 +16,10 @@ router.put('/:id', CompaniesController.update);
 
 router.delete('/:id', CompaniesController.delete);
 
+router.post('/reservations', CompaniesController.createReservation);
+
+// router.get('/reservations', authMiddleware, reservationController.getUserReservations);
+
+// router.delete('/reservations/:id', authMiddleware, reservationController.delete);
+
 module.exports = router;
